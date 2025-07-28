@@ -1,0 +1,13 @@
+pkg load database  % Cargar el paquete de base de datos
+
+% Conectar a la base de datos
+conn = pq_connect(setdbopts('dbname', 'postgres', 'host', 'localhost', 'port', '5432', 'user', 'postgres', 'password', 'mariannenicte8934'));
+
+%ingresar datos desde OCTAVE
+N=pq_exec_params(conn, "INSERT INTO Tarea_2 VALUES('Marianne','202000656');")
+% Ejecutar la consulta SQL
+N = pq_exec_params(conn, 'SELECT * FROM Tarea_2;');
+disp(N);
+
+% Cerrar la conexión (recomendado)
+pq_close(conn);
