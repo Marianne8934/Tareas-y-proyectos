@@ -1,0 +1,5 @@
+Nombre: Marianne , Peso: 45.00 kg, Altura: 1.58 m, IMC: 18.03, Categoría: Bajo peso
+Nombre: Aura, Peso: 58.00 kg, Altura: 1.60 m, IMC: 22.66, Categoría: Peso normal
+Nombre: Ana, Peso: 64.00 kg, Altura: 1.65 m, IMC: 23.51, Categoría: Peso normal
+Nombre: And�ré, Peso: 70.00 kg, Altura: 1.80 m, IMC: 21.60, Categoría: Peso normal
+Nombre: Marco, Peso: 80.00 kg, Altura: 1.76 m, IMC: 25.83, Categoría: Sobrepeso
