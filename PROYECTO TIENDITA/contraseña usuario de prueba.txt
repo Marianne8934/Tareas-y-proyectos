@@ -1,0 +1,73 @@
+Jorge123
+AMmhKA8X96R^z$Jk
+
+Ana 
+Nr62VvRu9ugvq6^8%M
+
+SUPERUSUARIO
+Marianne 
+Proyectos123
+
+python manage.py makemigrations app
+python manage.py migrate
+
+
+docker exec -it tiendita_postgres psql -U userAdmin -d tienditaDelBarrio_db
+
+
+SELECT id, username, email, is_active, date_joined 
+FROM auth_user 
+ORDER BY date_joined DESC;
+
+-- Ver todos los usuarios
+SELECT id, username, email, is_active, date_joined 
+FROM auth_user 
+ORDER BY date_joined DESC;
+
+-- Ver clientes con información completa
+SELECT 
+    c.id, 
+    c.name, 
+    c.email, 
+    c.nit,
+    u.username,
+    c.failed_login_attempts,
+    c.locked_until
+FROM app_customers c
+LEFT JOIN auth_user u ON c.user_id = u.id
+ORDER BY c.id;
+
+-- Ver productos con stock
+SELECT 
+    id, 
+    name, 
+    price, 
+    stock,
+    CASE WHEN stock > 0 THEN 'DISPONIBLE' ELSE 'AGOTADO' END as estado
+FROM app_product 
+ORDER BY price DESC;
+
+-- Ver órdenes recientes
+SELECT 
+    o.id,
+    c.name as cliente,
+    o.status,
+    o.date_ordered,
+    o.get_cart_total as total
+FROM app_order o
+LEFT JOIN app_customers c ON o.customer_id = c.id
+ORDER BY o.date_ordered DESC
+LIMIT 10;
+
+-- Ver items de órdenes
+SELECT 
+    oi.id,
+    o.id as orden_id,
+    p.name as producto,
+    oi.quantity,
+    p.price,
+    (oi.quantity * p.price) as total_item
+FROM app_orderitem oi
+LEFT JOIN app_order o ON oi.order_id = o.id
+LEFT JOIN app_product p ON oi.product_id = p.id
+ORDER BY oi.date_added DESC;
